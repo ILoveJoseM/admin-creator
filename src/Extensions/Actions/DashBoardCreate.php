@@ -9,27 +9,35 @@
 namespace JoseChan\AdminCreator\Extensions\Actions;
 
 
-use Illuminate\Contracts\Support\Renderable;
+use Encore\Admin\Admin;
 
-class DashBoardCreate implements Renderable
+class DashBoardCreate
 {
+    protected $id;
 
-    protected $resource;
-    protected $key;
-
-    public function __construct($resource, $key)
+    public function __construct($id)
     {
-        $this->resource = $resource;
-        $this->key = $key;
+        $this->id = $id;
     }
 
-    public function render()
+    protected function script()
     {
-        return <<<EOT
-<a href="/admin/dash/{$this->key}/edit">
-    <i class="fa fa-plus"></i>
-</a>
-EOT;
+        return <<<SCRIPT
+
+$('.grid-edit-row').on('click', function () {
+
+    location.href = "/admin/dash/{$this->id}/edit";
+
+});
+
+SCRIPT;
+    }
+
+    protected function render()
+    {
+        Admin::script($this->script());
+
+        return "<a class='btn btn-xs btn-success fa fa-plus grid-edit-row' data-id='{$this->id}'></a>";
     }
 
     public function __toString()
