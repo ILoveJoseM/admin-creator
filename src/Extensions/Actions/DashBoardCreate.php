@@ -15,7 +15,7 @@ use Encore\Admin\Actions\RowAction;
  * Class DashBoardCreate
  * @package JoseChan\AdminCreator\Extensions\Actions
  */
-class DashBoardCreate
+class DashBoardCreate extends RowAction
 {
     public $name = "生成控制器";
 
