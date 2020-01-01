@@ -71,9 +71,9 @@ class DashBoardController extends Controller
         $creator = new ControllerCreator(
             new Filesystem(),
             $params,
-            $fields
+            $fields,
+            config("admin_creator")
         );
-
 
         $result = $creator->create();
 
