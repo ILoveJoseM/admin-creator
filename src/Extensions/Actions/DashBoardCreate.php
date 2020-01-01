@@ -8,40 +8,22 @@
 
 namespace JoseChan\AdminCreator\Extensions\Actions;
 
+use Encore\Admin\Actions\RowAction;
 
-use Encore\Admin\Admin;
-
+/**
+ * 生成控制器页面跳转按钮
+ * Class DashBoardCreate
+ * @package JoseChan\AdminCreator\Extensions\Actions
+ */
 class DashBoardCreate
 {
-    protected $id;
+    public $name = "生成控制器";
 
-    public function __construct($id)
+    /**
+     * @return string
+     */
+    public function href()
     {
-        $this->id = $id;
-    }
-
-    protected function script()
-    {
-        return <<<SCRIPT
-
-$('.grid-edit-row').on('click', function () {
-
-    location.href = "/admin/dash/{$this->id}/edit";
-
-});
-
-SCRIPT;
-    }
-
-    protected function render()
-    {
-        Admin::script($this->script());
-
-        return "<a class='btn btn-xs btn-success fa fa-plus grid-edit-row' data-id='{$this->id}'></a>";
-    }
-
-    public function __toString()
-    {
-        return $this->render();
+        return "/admin/dash/{$this->getKey()}/edit";
     }
 }
