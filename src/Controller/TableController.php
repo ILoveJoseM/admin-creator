@@ -53,7 +53,7 @@ class TableController extends Controller
                 $actions->disableEdit();
                 $actions->disableView();
                 $actions->disableDelete();
-                $actions->append(new DashBoardCreate($actions->getKey()));
+                $actions->add(new DashBoardCreate());
             });
 
         });
