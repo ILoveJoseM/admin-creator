@@ -19,7 +19,7 @@ class AdminCreatorProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->publishes([__DIR__ . '/../../config/admin_creator.php.php' => config_path("admin_.php")], "admin-creator");
+        $this->publishes([__DIR__ . '/../../config/admin_creator.php' => config_path("admin_creator.php")], "admin-creator");
         $this->publishes([__DIR__ . '/../stubs' => public_path("stubs")], "admin-creator");
     }
 
